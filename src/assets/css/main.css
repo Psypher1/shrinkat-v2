@@ -1,0 +1,57 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@theme static {
+  --color-kat-50: #fdf6e9;
+  --color-kat-100: #f9e7c0;
+  --color-kat-200: #f3d08c;
+  --color-kat-300: #e8ae40;
+  --color-kat-400: #d29219;
+  --color-kat-500: #ae7915;
+  --color-kat-600: #895f10;
+  --color-kat-700: #65460c;
+  --color-kat-800: #453007;
+  --color-kat-900: #2a1d04;
+  --color-kat-950: #150f02;
+
+  --color-brand-50: #e8ae40;
+  --color-brand-100: #e6a62e;
+  --color-brand-200: #d29219;
+  --color-brand-300: #ae7915;
+  --color-brand-400: #895f10;
+  --color-brand-500: #65460c;
+  --color-brand-600: #332306;
+  --color-brand-700: #010000;
+  --color-brand-800: #000000;
+  --color-brand-900: #000000;
+  --color-brand-950: #000000;
+
+  /* secondary — teal/blue, complementary to the warm gold-brown */
+  --color-katsecondary-50: #eff8fa;
+  --color-katsecondary-100: #dceef2;
+  --color-katsecondary-200: #b8dce6;
+  --color-katsecondary-300: #8cc5d6;
+  --color-katsecondary-400: #56a7bf;
+  --color-katsecondary-500: #2e8aa6;
+  --color-katsecondary-600: #256f87;
+  --color-katsecondary-700: #1e5a6c;
+  --color-katsecondary-800: #184654;
+  --color-katsecondary-900: #12333d;
+  --color-katsecondary-950: #0a1e24;
+
+  /* warning — distinct orange, since kat itself already lives in amber territory */
+  --color-katwarning-50: #fff7ed;
+  --color-katwarning-100: #ffedd5;
+  --color-katwarning-200: #fed7aa;
+  --color-katwarning-300: #fdba74;
+  --color-katwarning-400: #fb923c;
+  --color-katwarning-500: #f97316;
+  --color-katwarning-600: #ea580c;
+  --color-katwarning-700: #c2410c;
+  --color-katwarning-800: #9a3412;
+  --color-katwarning-900: #7c2d12;
+  --color-katwarning-950: #431407;
+}
