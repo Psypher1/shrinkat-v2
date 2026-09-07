@@ -23,9 +23,9 @@ const state = reactive({
 
 async function onSubmit(event) {
 	const { long_url, key } = event.data;
-	console.log(long_url, key);
+	// console.log(long_url, key);
 
-	console.log("user at submit time:", user.value.sub);
+	// console.log("user at submit time:", user.value.sub);
 
 	if (!user.value) {
 		toast.add({
@@ -48,27 +48,16 @@ async function onSubmit(event) {
 			return;
 		}
 
-		if (data) {
-			createShortKey();
-			state.long_url = "";
-			toast.add({ title: "Success", description: "Link created" });
-			return;
-		}
+		createShortKey();
+		state.long_url = "";
+		await refreshLinks();
+
 		toast.add({ title: "Success", description: "Link created" });
 	} catch (error) {
 		toast.add({ title: "Error", description: error.message, color: "error" });
 	}
 }
-console.log("user keys:", Object.keys(user.value));
-console.log("user json:", JSON.stringify(user.value));
-console.log("user.value.id specifically:", user.value.id);
-
-watch(user, (val) => console.log("user changed:", val), { immediate: true });
-
-onMounted(() => {
-	console.log("user on mount:", user.value);
-});
-
+//
 function createShortKey() {
 	state.key = nanoid(6);
 }
@@ -78,7 +67,7 @@ async function signOut() {
 	if (error) console.log(error);
 }
 
-const links = [
+const linksData = [
 	{
 		key: "/Lmdkela",
 		long_url: "dantealighieri.com",
@@ -96,6 +85,15 @@ const links = [
 onMounted(() => {
 	createShortKey();
 });
+
+const { data, refresh: refreshLinks } = useAsyncData("links", async () => {
+	const { data, error } = await supabase.from("links").select("*").eq("user_id", user.value?.sub);
+
+	if (error) throw error;
+	return data;
+});
+
+console.log("Daat", data.value);
 </script>
 
 <template>
@@ -131,7 +129,7 @@ onMounted(() => {
 		</section>
 
 		<section class="mt-12 space-y-4">
-			<LinkItem v-for="link in links" :link="link" />
+			<LinkItem v-for="link in data" :link="link" />
 			<!-- <UCard class="">
 				<div class="item-center flex justify-between">
 					<div>
