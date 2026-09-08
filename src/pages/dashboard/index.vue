@@ -96,8 +96,6 @@ const { data, refresh } = useAsyncData("links", async () => {
 	if (error) throw error;
 	return data;
 });
-
-console.log("Daat", data.value);
 </script>
 
 <template>
@@ -105,21 +103,21 @@ console.log("Daat", data.value);
 		<h1 class="text-5xl font-semibold">Dashboard</h1>
 
 		<section class="mt-6">
-			<UCard class="h-32">
+			<UCard class="">
 				<UForm
 					:state="state"
 					:schema="schema"
 					@submit="onSubmit"
-					class="flex items-end gap-5"
+					class="grid grid-cols-5 gap-5"
 				>
-					<UFormField label="Long URL" name="long_url" class="flex-1" size="xl">
+					<UFormField label="Long URL" name="long_url" class="col-span-2" size="xl">
 						<UInput
 							v-model="state.long_url"
 							placeholder="Enter long url"
 							class="w-full"
 						/>
 					</UFormField>
-					<UFormField label="Short Key" name="key" class="flex-1" size="xl">
+					<UFormField label="Short Key" name="key" class="col-span-2" size="xl">
 						<UInput
 							readonly
 							v-model="state.key"
@@ -127,7 +125,9 @@ console.log("Daat", data.value);
 							class="w-full"
 						/>
 					</UFormField>
-					<UButton type="submit" sized="xl" class="h-fit">Shrink</UButton>
+					<div class="col-span-1 justify-self-end">
+						<UButton type="submit" size="xl" class="">Shrink</UButton>
+					</div>
 				</UForm>
 			</UCard>
 		</section>
