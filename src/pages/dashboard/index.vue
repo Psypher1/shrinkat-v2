@@ -50,7 +50,7 @@ async function onSubmit(event) {
 
 		createShortKey();
 		state.long_url = "";
-		await refresh;
+		await refresh();
 
 		toast.add({ title: "Success", description: "Link created" });
 	} catch (error) {
@@ -87,7 +87,11 @@ onMounted(() => {
 });
 
 const { data, refresh } = useAsyncData("links", async () => {
-	const { data, error } = await supabase.from("links").select("*").eq("user_id", user.value?.sub);
+	const { data, error } = await supabase
+		.from("links")
+		.select("*")
+		.eq("user_id", user.value?.sub)
+		.order("created_at", { ascending: false });
 
 	if (error) throw error;
 	return data;
