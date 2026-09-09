@@ -2,6 +2,7 @@
 import * as z from "zod";
 const config = useRuntimeConfig();
 const appUrl = config.public.appUrl;
+console.log("🚀 ~ appUrl:", appUrl);
 
 const toast = useToast();
 const supabase = useSupabaseClient();
