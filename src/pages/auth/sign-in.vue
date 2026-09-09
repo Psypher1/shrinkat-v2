@@ -18,7 +18,6 @@ const state = reactive({
 async function signInOTP(event) {
 	const { email } = event.data;
 
-	console.log("email", email);
 	const { error } = await supabase.auth.signInWithOtp({
 		email,
 		options: { emailRedirectTo: `${appUrl}/auth/confirm` },
@@ -29,10 +28,12 @@ async function signInOTP(event) {
 		return;
 	}
 
-	toast.add({
-		title: "Check your email",
-		description: "We sent you a magic link to sign in.",
-	});
+	// toast.add({
+	// 	title: "Check your email",
+	// 	description: "We sent you a magic link to sign in.",
+	// });
+
+	navigateTo({ path: "/auth/check-email", query: { email } });
 }
 </script>
 
