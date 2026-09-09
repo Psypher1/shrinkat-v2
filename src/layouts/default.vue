@@ -29,7 +29,7 @@ const links = [
 const items = computed(() => [
 	[
 		{
-			label: user.value?.email ? user.value.email : "Nik Mutseyekwa",
+			label: user.value?.email ? user.value.email.split("@")[0] : "Nik Mutseyekwa",
 			type: "label",
 		},
 	],
@@ -67,6 +67,7 @@ const items = computed(() => [
 				<UNavigationMenu :items="links" orientation="vertical" />
 			</template>
 			<template #right>
+				<UColorModeButton />
 				<UNavigationMenu :items="links" class="hidden md:flex" />
 				<div v-if="user" class="flex gap-4">
 					<!-- <UButton to="/dashboard" class="" size="md">Dashbord</UButton>

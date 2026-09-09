@@ -20,7 +20,7 @@ async function signInOTP(event) {
 	console.log("email", email);
 	const { error } = await supabase.auth.signInWithOtp({
 		email,
-		options: { emailRedirectTo: `http://localhost:3000/auth/confirm` },
+		options: { emailRedirectTo: `${appUrl}/auth/confirm` },
 	});
 
 	if (error) {

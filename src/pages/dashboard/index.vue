@@ -102,22 +102,17 @@ const { data, refresh } = useAsyncData("links", async () => {
 	<div class="mx-auto max-w-5xl">
 		<h1 class="text-5xl font-semibold">Dashboard</h1>
 
-		<section class="mt-6">
+		<section class="mt-6" aria-label="shrink form">
 			<UCard class="">
-				<UForm
-					:state="state"
-					:schema="schema"
-					@submit="onSubmit"
-					class="grid grid-cols-5 gap-5"
-				>
-					<UFormField label="Long URL" name="long_url" class="col-span-2" size="xl">
+				<UForm :state="state" :schema="schema" @submit="onSubmit" class="flex gap-5">
+					<UFormField label="Long URL" name="long_url" class="flex-1" size="xl">
 						<UInput
 							v-model="state.long_url"
 							placeholder="Enter long url"
 							class="w-full"
 						/>
 					</UFormField>
-					<UFormField label="Short Key" name="key" class="col-span-2" size="xl">
+					<UFormField label="Short Key" name="key" class="flex-1" size="xl">
 						<UInput
 							readonly
 							v-model="state.key"
@@ -125,14 +120,13 @@ const { data, refresh } = useAsyncData("links", async () => {
 							class="w-full"
 						/>
 					</UFormField>
-					<div class="col-span-1 justify-self-end">
-						<UButton type="submit" size="xl" class="">Shrink</UButton>
-					</div>
+
+					<UButton type="submit" size="xl" class="h-fit self-center">Shrink</UButton>
 				</UForm>
 			</UCard>
 		</section>
 
-		<section class="mt-12 space-y-4">
+		<section aria-label="shrinked links" class="mt-12 space-y-4">
 			<LinkItem v-for="link in data" :link="link" />
 			<!-- <UCard class="">
 				<div class="item-center flex justify-between">
